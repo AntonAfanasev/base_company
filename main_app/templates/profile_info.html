@@ -1,0 +1,29 @@
+﻿{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block content %}
+    <div class='content'>
+        <div class='profile_info'>
+        <div class='image_div'>
+        	<p>Здесь можно разместить фотографию</p>
+        </div>
+        <div class='info_div'>
+        	<p><b>Имя:</b> {{ profile.name }}</p>
+        	<p><b>Фамилия:</b> {{ profile.lastname }}</p>
+        	<p><b>Отчество:</b> {{ profile.middlename }}</p>
+        	<p><b>Дата рождения:</b> {{ profile.birthdate }}</p>
+        	<p><b>Эл.почта:</b> {{ profile.email }}</p>
+        	<p><b>Телефон:</b> {{ profile.phone }}</p>
+        	<p><b>Дата начала работы:</b> {{ profile.start_work_date }}</p>
+        	<p><b>Дата конца работы:</b> {{ profile.end_work_date }}</p>
+        	<p><b>Должность:</b> {{ profile.position }}</p>
+        	<p><b>Отдел:</b> {{ profile.sector }}</p>
+
+        </div>
+
+        </div>
+    </div>
+    
+
+{% endblock %}

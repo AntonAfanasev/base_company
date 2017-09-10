@@ -1,0 +1,77 @@
+﻿{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static %}
+
+
+{% block content %}
+<form method='post' action='{% url "profiles_filter" %}'>
+{% csrf_token %}
+	<div class='selector_list'>
+	<!-- Два цикла for понадобились потому, что каждый чекбокс поступает в таком виде:
+	{Порядковый номер : {lable чекбокса : value чекбокса}}. Собственно, второй цикл как раз для lable и value -->
+		{% for i,j in selector_list.items %}
+			{% for k,l in j.items %}
+		<div class='selector_element'><p>{{k}}</p>
+
+		 <input type="checkbox" name="selector{{i}}" value="{{l}}" /><br />
+		</div>
+			{% endfor %}
+		{% endfor %}
+		{{ form.as_p }}
+		<input type='submit' value='Поиск' />
+	</div>
+</form>
+
+
+ <div class='pagination_block'>
+    {% if profiles_list.has_previous %}
+        <a href="?page={{ profiles_list.previous_page_number }}">←</a>
+    {% endif %}
+ 
+    {% for num in profiles_list.paginator.page_range %}
+        {% if num == profiles_list.number %}
+            <span class="current"><b>{{ num }}</b></span>
+        {% else %}
+            <a href="?page={{ num }}"> {{ num }}</a>
+        {% endif %} 
+    {% endfor %}
+ 
+    {% if profiles_list.has_next %}
+        <a href="?page={{ profiles_list.next_page_number }}">→</a>
+    {% endif %}
+ </div>
+	<div class='table_div'>
+		<table cellspacing='0'>
+		<tr class='column_names'>
+					<td><p>Фамилия</p></td>
+					<td><p>Имя</p></td>
+					<td><p>Отчество</p></td>
+					<td><p>Дата рождения</p></td>
+					<td><p>Эл.почта</p></td>
+					<td><p>Телефон</p></td>
+					<td><p>Дата начала работы</p></td>
+					<td><p>Дата окончания работы</p></td>
+					<td><p>Должность</p></td>
+					<td><p>Отдел</p></td>
+
+				</tr>
+			{% for i in profiles_list %}
+				<tr>
+					<td><p><a href='{% url "profile_info" pk=i.pk %}'>{{i.lastname}}</a></p></td>
+					<td><p>{{i.name}}</p></td>
+					<td><p>{{i.middlename}}</p></td>
+					<td><p>{{i.birthdate}}</p></td>
+					<td><p>{{i.email}}</p></td>
+					<td><p>{{i.phone}}</p></td>
+					<td><p>{{i.start_work_date}}</p></td>
+					<td><p>{{i.end_work_date}}</p></td>
+					<td><p>{{i.position}}</p></td>
+					<td><p>{{i.sector}}</p></td>
+				</tr>
+			{% endfor %}
+		</table>
+		{% if empty_result %}
+		<p>Анкет, соответствующих указанным требованиям, не найдено.</p>
+		{% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+.page {
+	float:left;
+	width:85%;
+	padding:10px;
+	border:2px solid #000000;
+	margin-bottom:100px;
+    margin-left:100px;
+
+}
+
+
+.main_h1 {
+	text-align:center;
+}
+
+.selector_list {
+	float:left;
+	border:2px solid #000000;
+	margin-left:100px;
+	margin-bottom:20px;
+}
+
+.selector_element {
+	float:left;
+	padding:10px;
+	margin:10px;
+	text-align:center;
+
+}
+
+.selector_element p {
+	size:18px;
+	padding:15px;
+	border:2px solid #000000;
+	padding:13px;
+}
+
+.table_div td{
+	font-size:13px;
+	border-top:2px solid #000000;
+	border-right:2px solid #000000;
+	padding:3px;
+}
+
+.column_names{
+	font-weight:bold;
+}
+
+
+.profile_info {
+	float:left;
+	border:2px solid #000000;
+	padding:10px;
+}
+
+.image_div {
+	border:2px solid #000000;
+	margin:20px;
+	float:left;
+	width:200px;
+	height:250px;
+
+}
+
+.info_div {
+	float:left;
+	border:2px solid #000000;
+	margin:20px;
+	width:700px;
+	padding:20px;
+}
+
+.pagination_block {
+	float:left;
+	padding:20px;
+}
