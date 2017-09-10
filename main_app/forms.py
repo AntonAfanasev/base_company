@@ -1,5 +1,6 @@
 from django import forms
 from .models import Profile, Sector
+import sys
 
 ALPHABET = (
     ('АБВГДЕ','A-E',),
@@ -11,12 +12,12 @@ ALPHABET = (
     ('ЩЫЭЮЯ', 'Щ-Я',),
 )
 
-
 def build_sectors_list():
-	sectors = Sector.objects.all()
 	choices = [('all', 'Все отделы')]
-	for i in sectors:
-		choices.append((i.pk, i.name))
+	if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
+		sectors = Sector.objects.all()
+		for i in sectors:
+			choices.append((i.pk, i.name))
 	return choices
 
 class ProfileAdminForm(forms.ModelForm):
