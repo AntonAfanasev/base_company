@@ -11,7 +11,6 @@ https://greentask.in/zgrgxez
 
 Условия:
 Linux-сервер с предустановленным Python3 и pip.
-Подключенный домен, то 
 Предполагается, что проект уже загружен по адресу /home/ИМЯ_ПОЛЬЗОВАТЕЛЯ/webapps/company_base (в company_base лежат файлы и директории уровня manage.py).
 
 ШАГИ
