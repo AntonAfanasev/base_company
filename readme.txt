@@ -13,7 +13,29 @@ https://greentask.in/zgrgxez
 Linux-сервер с предустановленным Python3 и pip.
 Предполагается, что проект уже загружен по адресу /home/ИМЯ_ПОЛЬЗОВАТЕЛЯ/webapps/company_base (в company_base лежат файлы и директории уровня manage.py).
 
+
 ШАГИ
+
+0) Создаем БД PostgreSQL и немного меняем настройки в Django-проекте:
+sudo apt-get install postgresql-9.6
+sudo su - postgres
+psql
+CREATE DATABASE ЗДЕСЬ_ВПИСАТЬ_ЖЕЛАЕМОЕ_ИМЯ_БАЗЫ;
+\password postgres
+Вписываете новый пароль дважды.
+
+Переходим в /home/ИМЯ_ПОЛЬЗОВАТЕЛЯ/webapps/company_base/company_base/, создаем там файл local_settings.py и вписываем в него следующее:
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',     # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'ИМЯ_БД',                           # Or path to database file if using sqlite3.
+        'USER': 'postgres',                                   # Not used with sqlite3.
+        'PASSWORD': 'ПАРОЛЬ_ВЫБРАННЫЙ_ВАМИ_ДЛЯ_ПОЛЬЗОВАТЕЛЯ',                  # Not used with sqlite3.
+        'HOST': 'localhost',                                 # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '5432',                                         # Set to empty string for default. Not used with sqlite3.
+    }
+}
 
 1) Скачиваем virtualenv и другие пакеты для проекта:
 sudo pip install virtualenv
