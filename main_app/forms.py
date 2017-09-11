@@ -12,13 +12,6 @@ ALPHABET = (
     ('ЩЫЭЮЯ', 'Щ-Я',),
 )
 
-def build_sectors_list():
-	choices = [('all', 'Все отделы')]
-	sectors = Sector.objects.all()
-	for i in sectors:
-		choices.append((i.pk, i.name))
-	return choices
-
 class ProfileAdminForm(forms.ModelForm):
 	class Meta:
 		model = Profile
